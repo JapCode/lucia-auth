@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import {
   SignUpValidator,
   TSignUpValidator,
@@ -18,6 +19,7 @@ import {
 import signUp from "@/utils/signUp";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -108,9 +110,17 @@ const SignUpForm = () => {
         <Button type="submit" className="w-full">
           Create an account
         </Button>
-        <Button variant="outline" className="w-full">
+        <Link
+          href="/OAuth/github"
+          className={cn(
+            buttonVariants({
+              variant: "outline",
+              className: "w-full",
+            })
+          )}
+        >
           Sign up with GitHub
-        </Button>
+        </Link>
       </form>
     </Form>
   );
